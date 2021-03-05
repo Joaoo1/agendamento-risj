@@ -15,6 +15,7 @@ import {
   Recaptcha,
   Button,
   ScheduleLoadingContainer,
+  ErrorList,
 } from './styles';
 
 const Appointment = () => {
@@ -23,7 +24,7 @@ const Appointment = () => {
   let initialSchedule = [];
   const [schedule, setSchedule] = useState([]);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
   const [modalInfo, setModalInfo] = useState({ day: '', hour: '' });
   const [docNumber, setDocNumber] = useState('');
   const [user, setUser] = useState({ cpf: '', phone: '', email: '', name: '' });
@@ -31,6 +32,7 @@ const Appointment = () => {
   const [isVerified, setVerified] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isLoadingSchedule, setLoadingSchedule] = useState(false);
+  const [formErrors, setFormErrors] = useState(false);
 
   function handleCloseModal() {
     setUser({ cpf: '', phone: '', email: '', name: '' });
@@ -41,6 +43,7 @@ const Appointment = () => {
     setSchedule([]);
     document.getElementById('cpf-input').value = '';
     captcha.reset();
+    setFormErrors(null);
     setShowSuccessModal(false);
   }
 
@@ -54,16 +57,24 @@ const Appointment = () => {
     } else {
       try {
         setLoading(true);
-        const response = await api.post('/appointments', {
-          ...user,
-          date: selectedDate,
-          docNumber,
-        });
+        const ap = { ...user };
+        if (selectedDate) ap.date = selectedDate;
+        ap.docNumber = docNumber;
+        const response = await api.post('/appointments', ap);
 
         setModalInfo({ day: response.data.date, hour: response.data.hour });
         setShowSuccessModal(true);
       } catch (err) {
-        alert(err.message);
+        if (err.response.data) {
+          setFormErrors(err.response.data.errors);
+
+          return;
+        }
+        await growl({
+          title: 'Erro',
+          message: 'Ocorreu um erro ao cadastrar agendamento',
+          type: 'error',
+        });
       } finally {
         setLoading(false);
       }
@@ -103,7 +114,13 @@ const Appointment = () => {
     try {
       setLoading(true);
       const response = await api.get(`/user/${cpf}`);
-      setUser(response.data);
+      const { name, phone, email } = response.data;
+      setUser({
+        cpf,
+        name: name || user.name,
+        phone: phone || user.phone,
+        email: email || user.email,
+      });
       setCPFLoaded(true);
     } catch (err) {
       await growl({
@@ -212,6 +229,13 @@ const Appointment = () => {
             verifyCallback={() => setVerified(true)}
             expiredCallback={() => setVerified(false)}
           />
+          {formErrors && (
+            <ErrorList>
+              {formErrors.map(e => (
+                <li>{e}</li>
+              ))}
+            </ErrorList>
+          )}
           <Button onClick={handleCreateAppointment}>
             Realizar agendamento
           </Button>

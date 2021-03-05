@@ -78,6 +78,13 @@ const ScheduleLoadingContainer = styled.div`
   margin-top: 20px;
 `;
 
+const ErrorList = styled.ul`
+  margin-top: 30px;
+  li {
+    color: red;
+  }
+`;
+
 export {
   Container,
   Button,
@@ -88,4 +95,5 @@ export {
   ScheduleCard,
   Recaptcha,
   ScheduleLoadingContainer,
+  ErrorList,
 };
