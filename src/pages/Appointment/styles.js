@@ -1,25 +1,91 @@
 import styled from 'styled-components';
+import ReactCalendar from 'react-calendar';
+import RecaptchaV2 from 'react-recaptcha';
+
+import MyCPFInput from '../../components/CPFInput';
 import { PrimaryButton } from '../../styles/button';
 
 const Container = styled.div`
   width: 100%;
+  height: 100vh - 160px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-top: 40px;
-  max-width: 700px;
 
   h2 {
     margin-bottom: 10px;
     text-align: center;
+  }
+
+  fieldset {
+    margin-left: 25px;
+    max-width: 560px;
   }
 `;
 
 const Button = styled(PrimaryButton)`
   width: 100%;
   margin-top: 15px;
-  height: 56px;
 `;
 
-export { Container, Button };
+const Calendar = styled(ReactCalendar)`
+  width: 100%;
+  margin: 10px 20px 10px 0px;
+`;
+
+const Input = styled.input`
+  width: 100%;
+`;
+
+const CPFInput = styled(MyCPFInput)`
+  width: 100%;
+`;
+
+const FieldSetLabel = styled.p`
+  font-weight: 500;
+  margin-bottom: 10px;
+  :not(:first-child) {
+    margin-top: 40px;
+  }
+`;
+
+const ScheduleCard = styled.div`
+  display: inline-block;
+  width: 120px;
+  cursor: ${props => (props.isAvailable ? 'pointer' : 'default')};
+  margin: 10px;
+  padding: 10px 15px 10px 15px;
+  border-radius: var(--default-border-radius);
+  background-color: ${props => (props.isSelected ? '#A6A2A2' : '#FFFFFF')};
+  color: ${props =>
+    props.isAvailable ? 'var(--primary-font-color)' : '#d4d4d4'};
+
+  p {
+    text-align: center;
+  }
+`;
+
+const Recaptcha = styled(RecaptchaV2)`
+  float: right;
+  margin: 30px 10px 0px 0px;
+`;
+
+const ScheduleLoadingContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+`;
+
+export {
+  Container,
+  Button,
+  Calendar,
+  Input,
+  CPFInput,
+  FieldSetLabel,
+  ScheduleCard,
+  Recaptcha,
+  ScheduleLoadingContainer,
+};

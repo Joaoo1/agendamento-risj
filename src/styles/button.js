@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const BaseButton = styled.button`
   border: none;
-  border-radius: 15px;
+  border-radius: calc(var(--default-border-radius) + 7px);
   font: 400 15px 'Poppins', sans-serif;
   height: var(--height-input);
   color: white;
