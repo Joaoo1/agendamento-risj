@@ -26,6 +26,7 @@ const Container = styled.div`
 const Button = styled(PrimaryButton)`
   width: 100%;
   margin-top: 15px;
+  z-index: -1;
 `;
 
 const Calendar = styled(ReactCalendar)`

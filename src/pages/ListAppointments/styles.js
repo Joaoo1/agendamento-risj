@@ -57,7 +57,7 @@ const Divider = styled.div`
 const Table = styled.table`
   border-spacing: 0px 5px;
   width: 70%;
-  margin-top: 30px;
+  margin: 30px 10px 30px 10px;
 
   @media (max-width: 840px) {
     width: 90%;

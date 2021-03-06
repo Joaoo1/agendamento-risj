@@ -28,7 +28,7 @@ const ListAppointments = () => {
 
   function handleOpenModal(appointment) {
     setModalInfo({
-      day: appointment.day,
+      day: appointment.date,
       hour: appointment.hour,
       id: appointment.id,
     });
@@ -127,7 +127,7 @@ const ListAppointments = () => {
         <Table>
           <thead>
             <tr>
-              <th>CPF</th>
+              {window.innerWidth > 600 && <th>CPF</th>}
               <th>Dia</th>
               <th>Hora</th>
               <th colSpan="2">Status</th>
@@ -136,7 +136,7 @@ const ListAppointments = () => {
           <tbody>
             {appointments.map(a => (
               <tr key={a.id}>
-                <td>{a.cpf}</td>
+                {window.innerWidth > 600 && <td>{a.cpf}</td>}
                 <td>{a.date}</td>
                 <td>{a.hour}</td>
                 <td>{a.status}</td>
