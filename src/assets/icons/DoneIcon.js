@@ -1,4 +1,4 @@
-const CancelIcon = ({ onClick, description = '' }) => (
+const DoneIcon = ({ onClick, description = '' }) => (
   <div title={description}>
     <svg
       onClick={onClick}
@@ -9,10 +9,10 @@ const CancelIcon = ({ onClick, description = '' }) => (
     >
       <path d="M0 0h24v24H0z" fill="none" />
       <path
-        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-        fill="red"
+        d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
+        fill="green"
       />
     </svg>
   </div>
 );
-export default CancelIcon;
+export default DoneIcon;

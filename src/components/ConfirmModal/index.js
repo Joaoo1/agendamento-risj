@@ -9,26 +9,27 @@ import {
   Text,
 } from './styles';
 
-const CancelModal = ({
+const ConfirmModal = ({
   show,
   handleClose,
   handleConfirm,
-  day,
-  hour,
-  appointmentId,
+  message,
+  title,
+  confirmButtonColor = '#ff2424',
 }) =>
   show ? (
     <Modal>
       <ModalMain>
-        <Title>Cancelar agendamento</Title>
+        <Title>{title}</Title>
         <Divider />
-        <Text>
-          {`Deseja realmente cancelar o agendamento do dia ${day} as ${hour} horas?`}
-        </Text>
+        <Text>{message}</Text>
         <Divider />
         <ButtonsContainer>
           <CancelButton onClick={handleClose}>Cancelar</CancelButton>
-          <ConfirmButton onClick={() => handleConfirm(appointmentId)}>
+          <ConfirmButton
+            backgroundColor={confirmButtonColor}
+            onClick={handleConfirm}
+          >
             Confirmar
           </ConfirmButton>
         </ButtonsContainer>
@@ -37,4 +38,4 @@ const CancelModal = ({
   ) : (
     <></>
   );
-export default CancelModal;
+export default ConfirmModal;

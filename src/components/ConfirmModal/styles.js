@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { BaseButton, WarningButton } from '../../styles/button';
+import { BaseButton } from '../../styles/button';
 
 const Modal = styled.div`
   position: fixed;
@@ -44,9 +44,10 @@ const ButtonsContainer = styled.div`
   justify-content: flex-end;
 `;
 
-const ConfirmButton = styled(WarningButton)`
+const ConfirmButton = styled(BaseButton)`
   padding: 5px 30px 5px 30px;
   margin: 20px 20px 20px 0px;
+  background-color: ${props => props.backgroundColor};
 `;
 
 const CancelButton = styled(BaseButton)`

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { growl } from '@crystallize/react-growl';
 
 import api from '../../services/api';
-import CancelModal from '../../components/CancelModal';
+import CancelModal from '../../components/ConfirmModal';
 import LoadingIndicator from '../../components/LoadingIndicator';
 
 import {
@@ -51,10 +51,10 @@ const ListAppointments = () => {
     }
   }
 
-  async function handleConfirmCancel(id) {
+  async function handleConfirmCancel() {
     try {
       setLoading(true);
-      await api.put(`/user_appointments/${id}`);
+      await api.put(`/cancel_appointment/${modalInfo.id}`);
       searchAppointments();
       await growl({
         title: 'Sucesso',
@@ -106,10 +106,10 @@ const ListAppointments = () => {
         show={showCancelModal}
         handleClose={handleCloseModal}
         handleConfirm={handleConfirmCancel}
-        hour={modalInfo.hour}
-        day={modalInfo.day}
-        appointmentId={modalInfo.id}
+        message={`Deseja realmente cancelar o agendamento do dia ${modalInfo.day} as ${modalInfo.hour}?`}
+        title="Cancelar agendamento"
       />
+
       <Container>
         <SearchContainer>
           <fieldset>
@@ -141,7 +141,10 @@ const ListAppointments = () => {
                 <td>{a.hour}</td>
                 <td>{a.status}</td>
                 <td>
-                  <CancelIcon onClick={() => handleOpenModal(a)} />
+                  <CancelIcon
+                    title="Cancelar agendamento"
+                    onClick={() => handleOpenModal(a)}
+                  />
                 </td>
               </tr>
             ))}

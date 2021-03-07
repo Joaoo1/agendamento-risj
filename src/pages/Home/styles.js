@@ -21,6 +21,7 @@ const Button = styled(PrimaryButton)`
   width: 100%;
   margin-top: 15px;
   height: 56px;
+  font-size: 16px;
 `;
 
 export { Container, Button };

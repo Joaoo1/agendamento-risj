@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
   :root{
-    --height-input: 46px;
+    --input-height: 46px;
     --primary-font-color: rgba(0,0,0,0.8);
     --primary-color: #C5C7C8;
     --body-margin: 80px;
@@ -36,7 +36,7 @@ export default createGlobalStyle`
   input {
     border: 1px solid #adadad !important;
     padding-left: 20px;
-    height: var(--height-input);
+    height: var(--input-height);
     border-radius: var(--default-border-radius);
   }
 

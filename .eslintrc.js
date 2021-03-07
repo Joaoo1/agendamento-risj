@@ -23,5 +23,6 @@ module.exports = {
     'arrow-parens': 'off',
     'react/prop-types': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'no-param-reassign': 'off',
   },
 };

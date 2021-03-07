@@ -202,7 +202,9 @@ const Appointment = () => {
           />
         </fieldset>
         <fieldset>
-          <legend>Número da guia ou pedido de certidão</legend>
+          <legend>
+            Número da guia ou pedido de certidão (somente para retirada).
+          </legend>
           <Input
             onChange={e => setDocNumber(e.target.value)}
             value={docNumber}
