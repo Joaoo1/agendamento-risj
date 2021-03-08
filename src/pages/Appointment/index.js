@@ -278,7 +278,7 @@ const Appointment = () => {
           />
         </RadioFieldSet>
         <FieldSetLabel>
-          3. Selecione o dia que você deseja retirar seu documento
+          3. Selecione o dia que você deseja agendar seu atendimento
         </FieldSetLabel>
         <fieldset>
           <Calendar
@@ -286,7 +286,7 @@ const Appointment = () => {
             onClickDay={date => loadSchedule(date)}
           />
         </fieldset>
-        <FieldSetLabel>3. Selecione um horário disponível</FieldSetLabel>
+        <FieldSetLabel>4. Selecione um horário disponível</FieldSetLabel>
         <fieldset>{renderScheduleList()}</fieldset>
         <fieldset>
           <Recaptcha
