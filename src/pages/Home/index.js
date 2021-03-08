@@ -14,7 +14,7 @@ const Home = () => {
   }
   return (
     <Container>
-      <h2>Agendamento para retirada de documento</h2>
+      <h2>Agendamento de atendimento</h2>
       <Button onClick={handleNavigateToAppointment}>Agendar um horário</Button>
       <Button onClick={handleNavigateToListAppointments}>
         Verificar agendamentos feitos
