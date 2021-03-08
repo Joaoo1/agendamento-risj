@@ -36,6 +36,10 @@ const ScheduleLoadingContainer = styled.div`
 
 const ServicesList = styled.ul`
   list-style: none;
+
+  li {
+    margin-top: 4px;
+  }
 `;
 
 export { Container, AppointmentsTable, ScheduleLoadingContainer, ServicesList };

@@ -214,7 +214,9 @@ const Appointment = () => {
             value={user.email}
           />
         </fieldset>
-        <FieldSetLabel>2. Selecione o tipo de atendimento</FieldSetLabel>
+        <FieldSetLabel>
+          2. Selecione quais tipos de atendimento você precisa
+        </FieldSetLabel>
         <RadioFieldSet>
           <label htmlFor="certificate-request">
             <input
