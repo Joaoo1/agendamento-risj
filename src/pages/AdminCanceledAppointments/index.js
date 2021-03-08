@@ -7,6 +7,7 @@ import {
   Container,
   AppointmentsTable,
   ScheduleLoadingContainer,
+  ServicesList,
 } from './styles';
 
 const AdminCanceledAppointments = () => {
@@ -56,6 +57,8 @@ const AdminCanceledAppointments = () => {
             <th>Email</th>
             <th>Dia/Hora</th>
             <th>Cancelado em</th>
+            <th>Tipo de atendimento</th>
+            <th>Nº guia/pedido</th>
           </tr>
         </thead>
         <tbody>
@@ -67,6 +70,14 @@ const AdminCanceledAppointments = () => {
               <td>{a.user.email}</td>
               <td>{`${a.date} ${a.hour}`}</td>
               <td>{a.canceledAt}</td>
+              <td>
+                <ServicesList>
+                  {a.services.map(s => (
+                    <li>{s}</li>
+                  ))}
+                </ServicesList>
+              </td>
+              <td>{a.docNumber}</td>
             </tr>
           ))}
         </tbody>

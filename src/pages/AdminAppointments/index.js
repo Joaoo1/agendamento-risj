@@ -11,6 +11,7 @@ import {
   Container,
   AppointmentsTable,
   ScheduleLoadingContainer,
+  ServicesList,
 } from './styles';
 
 const AdminAppointments = () => {
@@ -143,9 +144,11 @@ const AdminAppointments = () => {
             <th>Nome</th>
             <th>Telefone</th>
             <th>Email</th>
-            <th>Dia</th>
-            <th>Hora</th>
-            <th colSpan="2">Status</th>
+            <th>Dia/Hora</th>
+            <th>Status</th>
+            <th>Tipo de atendimento</th>
+            <th>Nº guia/pedido</th>
+            <th> </th>
           </tr>
         </thead>
         <tbody>
@@ -155,9 +158,16 @@ const AdminAppointments = () => {
               <td>{a.user.name}</td>
               <td>{a.user.phone}</td>
               <td>{a.user.email}</td>
-              <td>{a.date}</td>
-              <td>{a.hour}</td>
+              <td>{`${a.date} ${a.hour}`}</td>
               <td>{a.status}</td>
+              <td>
+                <ServicesList>
+                  {a.services.map(s => (
+                    <li>{s}</li>
+                  ))}
+                </ServicesList>
+              </td>
+              <td>{a.docNumber}</td>
               <td className="icons">
                 <CancelIcon
                   title="Cancelar agendamento"

@@ -11,13 +11,13 @@ const SuccessAppointmentModal = ({ show, handleClose, day, hour }) =>
           <Title>Agendamento Realizado</Title>
         </Header>
         <Content>
-          <p>{`O retirada do seu título foi agendado com sucesso para o dia 
+          <p>{`Agendamento realizado com sucesso para o dia 
           ${day} às ${hour}. O cartório fica localizado na Avenida 
           Leoberto Leal, n° 389 no bairro Barreiros em São José. A retirada 
           pode ser feita no 1° andar na sala 16A.`}</p>
           <p>
-            Em caso de retirada de guia, é necessário trazer o recibo de
-            antecipação.
+            Em caso de retirada de documentos, é necessário trazer o recibo de
+            antecipação na via original.
           </p>
           <p className="red-text">
             ATENÇÃO: A sala para retiradas é uma sala separada do cartório,

@@ -16,6 +16,7 @@ import {
   Button,
   ScheduleLoadingContainer,
   ErrorList,
+  RadioFieldSet,
 } from './styles';
 
 const Appointment = () => {
@@ -45,6 +46,10 @@ const Appointment = () => {
     captcha.reset();
     setFormErrors(null);
     setShowSuccessModal(false);
+    const checkboxes = document.getElementsByName('service-type');
+    checkboxes.forEach(r => {
+      r.checked = false;
+    });
   }
 
   async function handleCreateAppointment() {
@@ -59,7 +64,15 @@ const Appointment = () => {
         setLoading(true);
         const ap = { ...user };
         if (selectedDate) ap.date = selectedDate;
+        const services = [];
+        const checkboxes = document.getElementsByName('service-type');
+        checkboxes.forEach(cb => {
+          if (cb.checked) {
+            services.push(cb.value);
+          }
+        });
         ap.docNumber = docNumber;
+        if (services.length > 0) ap.services = services;
         const response = await api.post('/appointments', ap);
 
         setModalInfo({ day: response.data.date, hour: response.data.hour });
@@ -125,7 +138,7 @@ const Appointment = () => {
     } catch (err) {
       await growl({
         title: 'Erro',
-        message: 'Erro ao buscar dados do CPF',
+        message: err.error,
         type: 'error',
       });
     } finally {
@@ -201,17 +214,71 @@ const Appointment = () => {
             value={user.email}
           />
         </fieldset>
-        <fieldset>
-          <legend>
-            Número da guia ou pedido de certidão (somente para retirada).
-          </legend>
+        <FieldSetLabel>2. Selecione o tipo de atendimento</FieldSetLabel>
+        <RadioFieldSet>
+          <label htmlFor="certificate-request">
+            <input
+              type="checkbox"
+              id="certificate-request"
+              name="service-type"
+              value="Realizar pedido de certidão"
+            />
+            Realizar pedido de certidão
+          </label>
+          <label htmlFor="withdraw-certificate">
+            <input
+              type="checkbox"
+              id="withdraw-certificate"
+              name="service-type"
+              value="Retirada de pedido de certidão concluído"
+            />
+            Retirada de pedido de certidão concluído
+          </label>
+          <label htmlFor="checkin-guia">
+            <input
+              type="checkbox"
+              id="checkin-guia"
+              name="service-type"
+              value="Entrada de guia"
+            />
+            Entrada de guia
+          </label>
+          <label htmlFor="checkout-guia">
+            <input
+              type="checkbox"
+              id="checkout-guia"
+              name="service-type"
+              value="Retirada de guia pronta"
+            />
+            Retirada de guia pronta
+          </label>
+          <label htmlFor="checkout-requirements">
+            <input
+              type="checkbox"
+              id="checkout-requirements"
+              name="service-type"
+              value="Retirada de exigências"
+            />
+            Retirada de exigências
+          </label>
+          <label htmlFor="return-requirements">
+            <input
+              type="checkbox"
+              id="return-requirements"
+              name="service-type"
+              value="Retorno de exigências"
+            />
+            Retorno de exigências
+          </label>
+
+          <p>Número da(s) guia(s) e/ou pedido(s) de certidão.</p>
           <Input
             onChange={e => setDocNumber(e.target.value)}
             value={docNumber}
           />
-        </fieldset>
+        </RadioFieldSet>
         <FieldSetLabel>
-          2. Selecione o dia que você deseja retirar seu documento
+          3. Selecione o dia que você deseja retirar seu documento
         </FieldSetLabel>
         <fieldset>
           <Calendar

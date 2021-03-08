@@ -80,9 +80,28 @@ const ScheduleLoadingContainer = styled.div`
 `;
 
 const ErrorList = styled.ul`
+  margin: 5px;
   margin-top: 30px;
   li {
     color: red;
+  }
+`;
+
+const RadioFieldSet = styled.fieldset`
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin-top: 5px;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+
+    input {
+      margin-right: 8px;
+    }
   }
 `;
 
@@ -97,4 +116,5 @@ export {
   Recaptcha,
   ScheduleLoadingContainer,
   ErrorList,
+  RadioFieldSet,
 };
