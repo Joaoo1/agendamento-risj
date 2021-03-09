@@ -35,6 +35,19 @@ const Appointment = () => {
   const [isLoadingSchedule, setLoadingSchedule] = useState(false);
   const [formErrors, setFormErrors] = useState(false);
 
+  const invalidCPFs = [
+    '000.000.000-00',
+    '111.111.111-11',
+    '222.222.222-22',
+    '333.333.333-33',
+    '444.444.444-44',
+    '555.555.555-55',
+    '666.666.666-66',
+    '777.777.777-77',
+    '888.888.888-88',
+    '999.999.999-99',
+  ];
+
   function handleCloseModal() {
     setUser({ cpf: '', phone: '', email: '', name: '' });
     setSelectedDate('');
@@ -59,38 +72,50 @@ const Appointment = () => {
         message: 'A verificação de segurança não foi assinalada',
         type: 'error',
       });
-    } else {
-      try {
-        setLoading(true);
-        const ap = { ...user };
-        if (selectedDate) ap.date = selectedDate;
-        const services = [];
-        const checkboxes = document.getElementsByName('service-type');
-        checkboxes.forEach(cb => {
-          if (cb.checked) {
-            services.push(cb.value);
-          }
-        });
-        ap.docNumber = docNumber;
-        if (services.length > 0) ap.services = services;
-        const response = await api.post('/appointments', ap);
 
-        setModalInfo({ day: response.data.date, hour: response.data.hour });
-        setShowSuccessModal(true);
-      } catch (err) {
-        if (err.response.data) {
-          setFormErrors(err.response.data.errors);
+      return;
+    }
 
-          return;
+    if (invalidCPFs.findIndex(cpf => cpf === user.cpf) > -1) {
+      await growl({
+        title: 'CPF Inválido',
+        message: 'Por favor digite um CPF válido',
+        type: 'error',
+      });
+
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const ap = { ...user };
+      if (selectedDate) ap.date = selectedDate;
+      const services = [];
+      const checkboxes = document.getElementsByName('service-type');
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          services.push(cb.value);
         }
-        await growl({
-          title: 'Erro',
-          message: 'Ocorreu um erro ao cadastrar agendamento',
-          type: 'error',
-        });
-      } finally {
-        setLoading(false);
+      });
+      ap.docNumber = docNumber;
+      if (services.length > 0) ap.services = services;
+      const response = await api.post('/appointments', ap);
+
+      setModalInfo({ day: response.data.date, hour: response.data.hour });
+      setShowSuccessModal(true);
+    } catch (err) {
+      if (err.response.data) {
+        setFormErrors(err.response.data.errors);
+
+        return;
       }
+      await growl({
+        title: 'Erro',
+        message: 'Ocorreu um erro ao cadastrar agendamento',
+        type: 'error',
+      });
+    } finally {
+      setLoading(false);
     }
   }
 
