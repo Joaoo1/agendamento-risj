@@ -35,20 +35,9 @@ const Appointment = () => {
   const [isLoadingSchedule, setLoadingSchedule] = useState(false);
   const [formErrors, setFormErrors] = useState(false);
 
-  const invalidCPFs = [
-    '000.000.000-00',
-    '111.111.111-11',
-    '222.222.222-22',
-    '333.333.333-33',
-    '444.444.444-44',
-    '555.555.555-55',
-    '666.666.666-66',
-    '777.777.777-77',
-    '888.888.888-88',
-    '999.999.999-99',
-  ];
-
+  // Handle success create appointment modal close
   function handleCloseModal() {
+    // Reset all form
     setUser({ cpf: '', phone: '', email: '', name: '' });
     setSelectedDate('');
     setDocNumber('');
@@ -66,20 +55,11 @@ const Appointment = () => {
   }
 
   async function handleCreateAppointment() {
+    // Check if reCAPTCHA is checked
     if (!isVerified) {
       await growl({
         title: 'Verificação falhou',
         message: 'A verificação de segurança não foi assinalada',
-        type: 'error',
-      });
-
-      return;
-    }
-
-    if (invalidCPFs.findIndex(cpf => cpf === user.cpf) > -1) {
-      await growl({
-        title: 'CPF Inválido',
-        message: 'Por favor digite um CPF válido',
         type: 'error',
       });
 
@@ -148,6 +128,7 @@ const Appointment = () => {
     }
   }
 
+  // Get CPF info when the user finishes typing
   async function handleCPFFinished(cpf) {
     try {
       setLoading(true);
@@ -168,6 +149,15 @@ const Appointment = () => {
       });
     } finally {
       setLoading(false);
+    }
+  }
+
+  // Function to allow just numbers for phone input
+  function handleChangePhoneInput(e) {
+    const re = /^[0-9\b]+$/;
+
+    if (e.target.value === '' || re.test(e.target.value)) {
+      setUser({ ...user, phone: e.target.value });
     }
   }
 
@@ -224,11 +214,12 @@ const Appointment = () => {
           />
         </fieldset>
         <fieldset>
-          <legend>Telefone</legend>
+          <legend>Telefone com DDD</legend>
           <Input
             disabled={!CPFLoaded}
-            onChange={e => setUser({ ...user, phone: e.target.value })}
+            onChange={handleChangePhoneInput}
             value={user.phone}
+            maxLength={11}
           />
         </fieldset>
         <fieldset>
