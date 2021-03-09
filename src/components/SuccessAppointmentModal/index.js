@@ -12,16 +12,12 @@ const SuccessAppointmentModal = ({ show, handleClose, day, hour }) =>
         </Header>
         <Content>
           <p>{`Agendamento realizado com sucesso para o dia 
-          ${day} às ${hour}. O cartório fica localizado na Avenida 
-          Leoberto Leal, n° 389 no bairro Barreiros em São José. A retirada 
-          pode ser feita no 1° andar na sala 16A.`}</p>
+          ${day} às ${hour}. O cartório
+           fica localizado na Avenida Leoberto Leal, n° 389 1º Andar, no bairro 
+           Barreiros em São José. `}</p>
           <p>
             Em caso de retirada de documentos, é necessário trazer o recibo de
             antecipação na via original.
-          </p>
-          <p className="red-text">
-            ATENÇÃO: A sala para retiradas é uma sala separada do cartório,
-            procure pela sala 16A.
           </p>
           <p>
             Caso tenha dúvidas, envie um email para atendimento@risaojose.com.br
