@@ -63,11 +63,19 @@ const AdminSchedule = () => {
       await api.delete(`/schedule/${selectedSchedule.id}`);
       fetchSchedule();
     } catch (err) {
-      await growl({
-        title: 'Erro',
-        message: 'Erro ao excluir horário',
-        type: 'error',
-      });
+      if (err.response) {
+        await growl({
+          title: 'Erro',
+          message: err.response.data.error,
+          type: 'error',
+        });
+      } else {
+        await growl({
+          title: 'Erro',
+          message: 'Erro ao excluir horário1',
+          type: 'error',
+        });
+      }
     } finally {
       handleCloseCancelModal();
       setLoading(false);
