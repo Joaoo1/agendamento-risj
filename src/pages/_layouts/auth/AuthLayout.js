@@ -1,9 +1,9 @@
-import Aside from './DefaultAside';
-import Title from './DefaultHeader';
+import Aside from './AuthAside';
+import Title from './AuthHeader';
 
 import { Container, Main } from './styles';
 
-const DefaultLayout = ({ children, title }) => (
+const AuthLayout = ({ children, title }) => (
   <>
     <Container>
       <Title title={title} />
@@ -13,4 +13,4 @@ const DefaultLayout = ({ children, title }) => (
   </>
 );
 
-export default DefaultLayout;
+export default AuthLayout;

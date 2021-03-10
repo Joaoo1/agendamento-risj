@@ -145,7 +145,6 @@ const AdminAppointments = () => {
             <th>Telefone</th>
             <th>Email</th>
             <th>Dia/Hora</th>
-            <th>Status</th>
             <th>Tipo de atendimento</th>
             <th>Nº guia/pedido</th>
             <th> </th>
@@ -159,7 +158,6 @@ const AdminAppointments = () => {
               <td>{a.user.phone}</td>
               <td>{a.user.email}</td>
               <td>{`${a.date} ${a.hour}`}</td>
-              <td>{a.status}</td>
               <td>
                 <ServicesList>
                   {a.services.map(s => (
@@ -200,7 +198,7 @@ const AdminAppointments = () => {
         show={showCancelModal}
         handleClose={handleCloseCancelModal}
         handleConfirm={handleCancelAppointment}
-        message={`Deseja realmente excluir o cancelar o agendamento do dia ${selectedAppointment.date} ás ${selectedAppointment.hour}?`}
+        message={`Deseja realmente cancelar o agendamento do dia ${selectedAppointment.date} ás ${selectedAppointment.hour}?`}
         title="Cancelar agendamento"
       />
       <Container>

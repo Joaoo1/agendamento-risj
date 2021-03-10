@@ -34,7 +34,7 @@ const AdminLogin = () => {
     try {
       setLoading(true);
       const response = await api.post('/admin_session', { login, password });
-      doLogin(response.data.token);
+      doLogin(response.data);
       history.push('/admin_appointments');
     } catch (err) {
       if (err.response) {

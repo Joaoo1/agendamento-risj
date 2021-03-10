@@ -8,6 +8,7 @@ import AdminAppointments from '../pages/AdminAppointments';
 import AdminSchedule from '../pages/AdminSchedule';
 import AdminLogin from '../pages/AdminLogin';
 import AdminCanceledAppointments from '../pages/AdminCanceledAppointments';
+import AdminConcludeAppointments from '../pages/AdminConcludeAppointments';
 
 const Routes = () => (
   <Switch>
@@ -32,6 +33,12 @@ const Routes = () => (
       component={AdminCanceledAppointments}
       isPrivate
       title="Agendamentos cancelados"
+    />
+    <RouteWrapper
+      path="/admin_conclude"
+      component={AdminConcludeAppointments}
+      isPrivate
+      title="Agendamentos concluídos"
     />
   </Switch>
 );

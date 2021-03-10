@@ -76,6 +76,12 @@ const Title = styled.h1`
   font-size: 24px;
 `;
 
+const UserName = styled.p`
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 500;
+`;
+
 export {
   Menu,
   MenuItem,
@@ -85,4 +91,5 @@ export {
   Main,
   TitleContainer,
   Title,
+  UserName,
 };
