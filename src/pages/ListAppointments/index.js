@@ -12,8 +12,8 @@ import {
   SearchContainer,
   Divider,
   Table,
+  CancelButton,
 } from './styles';
-import CancelIcon from '../../assets/icons/CancelIcon';
 
 const ListAppointments = () => {
   const [showCancelModal, setShowCancelModal] = useState(false);
@@ -141,10 +141,9 @@ const ListAppointments = () => {
                 <td>{a.hour}</td>
                 <td>{a.status}</td>
                 <td>
-                  <CancelIcon
-                    title="Cancelar agendamento"
-                    onClick={() => handleOpenModal(a)}
-                  />
+                  <CancelButton onClick={() => handleOpenModal(a)}>
+                    Cancelar
+                  </CancelButton>
                 </td>
               </tr>
             ))}

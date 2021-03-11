@@ -64,4 +64,21 @@ const Table = styled(BaseTable)`
   }
 `;
 
-export { Container, Button, CPFInput, SearchContainer, Divider, Table };
+const CancelButton = styled.button`
+  border: 1px solid #ff0000;
+  border-radius: 25px;
+  background-color: transparent;
+  color: red;
+  padding: 2px 10px 2px 10px;
+  float: right;
+`;
+
+export {
+  Container,
+  Button,
+  CPFInput,
+  SearchContainer,
+  Divider,
+  Table,
+  CancelButton,
+};
