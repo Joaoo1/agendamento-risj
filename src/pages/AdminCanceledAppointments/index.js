@@ -57,6 +57,7 @@ const AdminCanceledAppointments = () => {
             <th>Email</th>
             <th>Dia/Hora</th>
             <th>Cancelado em</th>
+            <th>Cancelado por</th>
             <th>Tipo de atendimento</th>
             <th>Nº guia/pedido</th>
           </tr>
@@ -70,6 +71,7 @@ const AdminCanceledAppointments = () => {
               <td>{a.user.email}</td>
               <td>{`${a.date} ${a.hour}`}</td>
               <td>{a.canceledAt}</td>
+              <td>{a.canceledBy.name}</td>
               <td>
                 <ServicesList>
                   {a.services.map(s => (

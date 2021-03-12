@@ -71,6 +71,7 @@ const CancelButton = styled.button`
   color: red;
   padding: 2px 10px 2px 10px;
   float: right;
+  font-size: 13px;
 `;
 
 export {

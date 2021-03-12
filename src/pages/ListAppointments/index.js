@@ -142,7 +142,7 @@ const ListAppointments = () => {
                 <td>{a.status}</td>
                 <td>
                   <CancelButton onClick={() => handleOpenModal(a)}>
-                    Cancelar
+                    Cancelar agendamento
                   </CancelButton>
                 </td>
               </tr>

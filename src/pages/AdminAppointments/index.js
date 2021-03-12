@@ -65,7 +65,7 @@ const AdminAppointments = () => {
   async function handleCancelAppointment() {
     try {
       setLoading(true);
-      await api.put(`/cancel_appointment/${selectedAppointment.id}`);
+      await api.put(`/admin_cancel_appointment/${selectedAppointment.id}`);
       await growl({
         title: 'Agendamento cancelado',
         message: 'O agendamento foi cancelado com sucesso',

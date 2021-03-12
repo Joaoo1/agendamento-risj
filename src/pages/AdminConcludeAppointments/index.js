@@ -76,7 +76,7 @@ const AdminConcludeAppointments = () => {
                   ))}
                 </ServicesList>
               </td>
-              <td>{a.adminUser.name}</td>
+              <td>{a.concludedBy.name}</td>
               <td>{a.docNumber}</td>
             </tr>
           ))}
