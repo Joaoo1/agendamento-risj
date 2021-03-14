@@ -61,6 +61,11 @@ const AdminSchedule = () => {
     try {
       setLoading(true);
       await api.delete(`/schedule/${selectedSchedule.id}`);
+      await growl({
+        title: 'Horário excluído',
+        message: 'Horário excluído com sucesso',
+        type: 'info',
+      });
       fetchSchedule();
     } catch (err) {
       if (err.response) {
@@ -72,7 +77,7 @@ const AdminSchedule = () => {
       } else {
         await growl({
           title: 'Erro',
-          message: 'Erro ao excluir horário1',
+          message: 'Erro ao excluir horário',
           type: 'error',
         });
       }

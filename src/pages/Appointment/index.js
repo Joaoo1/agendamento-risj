@@ -84,16 +84,23 @@ const Appointment = () => {
       setModalInfo({ day: response.data.date, hour: response.data.hour });
       setShowSuccessModal(true);
     } catch (err) {
-      if (err.response.data) {
-        setFormErrors(err.response.data.errors);
-
-        return;
+      if (err.response) {
+        if (err.response.data.errors) {
+          setFormErrors(err.response.data.errors);
+        } else {
+          await growl({
+            title: 'Erro',
+            message: err.response.data.error,
+            type: 'error',
+          });
+        }
+      } else {
+        await growl({
+          title: 'Erro',
+          message: 'Ocorreu um erro ao cadastrar agendamento',
+          type: 'error',
+        });
       }
-      await growl({
-        title: 'Erro',
-        message: 'Ocorreu um erro ao cadastrar agendamento',
-        type: 'error',
-      });
     } finally {
       setLoading(false);
     }

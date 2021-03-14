@@ -41,11 +41,19 @@ const ListAppointments = () => {
       const response = await api.get(`/user_appointments/${CPF}`);
       setAppointments(response.data);
     } catch (err) {
-      await growl({
-        title: 'Erro',
-        message: 'Erro ao buscar agendamentos',
-        type: 'error',
-      });
+      if (err.response) {
+        await growl({
+          title: 'Erro',
+          message: err.response.data.error,
+          type: 'error',
+        });
+      } else {
+        await growl({
+          title: 'Erro',
+          message: 'Erro ao buscar agendamentos',
+          type: 'error',
+        });
+      }
     } finally {
       setLoading(false);
     }

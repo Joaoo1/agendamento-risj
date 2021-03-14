@@ -40,7 +40,7 @@ const AdminLogin = () => {
       if (err.response) {
         setError('Houve um problema com o login, verifique suas credenciais.');
       } else {
-        setError('Houve um problema desconhecido no servidor.');
+        setError('Houve um problema no servidor.');
       }
     } finally {
       setLoading(false);

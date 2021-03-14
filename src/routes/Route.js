@@ -15,7 +15,7 @@ const RouteWrapper = ({ component: Component, isPrivate, title, ...rest }) => {
               <Component {...props} />
             </AuthLayout>
           ) : (
-            <Redirect to="/" />
+            <Redirect to="/admin" />
           )
         }
       />
