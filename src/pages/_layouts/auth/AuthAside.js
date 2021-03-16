@@ -23,6 +23,9 @@ const AuthAside = () => (
         <NavLink to="/admin_available">Horários disponíveis</NavLink>
       </MenuItem>
       <MenuItem>
+        <NavLink to="/admin_holidays">Feriados</NavLink>
+      </MenuItem>
+      <MenuItem>
         <NavLink onClick={() => logout()} to="/admin">
           Sair do sistema
         </NavLink>
