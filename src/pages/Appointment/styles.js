@@ -105,6 +105,40 @@ const RadioFieldSet = styled.fieldset`
   }
 `;
 
+const Footer = styled.footer`
+  z-index: -1;
+  transform: translateY(60px);
+
+  @media (max-width: 660px) {
+    transform: translateY(20px);
+    margin-top: 40px;
+
+    flex-direction: column;
+    p:last-child {
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+  }
+
+  display: flex;
+  justify-content: space-between;
+  p,
+  a {
+    font-size: 13px;
+    display: inline-block;
+  }
+
+  p {
+    margin: 0 5px;
+  }
+
+  a {
+    font-weight: 500;
+    text-decoration: none;
+    color: #000;
+  }
+`;
+
 export {
   Container,
   Button,
@@ -117,4 +151,5 @@ export {
   ScheduleLoadingContainer,
   ErrorList,
   RadioFieldSet,
+  Footer,
 };

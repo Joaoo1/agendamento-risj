@@ -13,6 +13,7 @@ import {
   Divider,
   Table,
   CancelButton,
+  Footer,
 } from './styles';
 
 const ListAppointments = () => {
@@ -157,6 +158,16 @@ const ListAppointments = () => {
             ))}
           </tbody>
         </Table>
+        <Footer>
+          <p>
+            Registro de imóveis de São José © 2021 - Todos os Direitos
+            Reservados{' '}
+          </p>
+          <p>
+            Desenvolvido por{' '}
+            <a href="https://github.com/Joaoo1">João Vitor da Silva</a>
+          </p>
+        </Footer>
       </Container>
     </>
   );

@@ -24,4 +24,29 @@ const Button = styled(PrimaryButton)`
   font-size: 16px;
 `;
 
-export { Container, Button };
+const Footer = styled.footer`
+  z-index: -1;
+  font-weight: 500;
+  position: absolute;
+  bottom: 10px;
+  width: 99%;
+  display: flex;
+  justify-content: space-between;
+
+  p,
+  a {
+    font-size: 13px;
+    display: inline-block;
+  }
+
+  p {
+    margin: 0 5px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+`;
+
+export { Container, Button, Footer };
