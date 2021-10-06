@@ -1,4 +1,15 @@
-const CancelIcon = ({ onClick, description = '' }) => (
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  onClick: PropTypes.func.isRequired,
+  description: PropTypes.string,
+};
+
+const defaultProps = {
+  description: '',
+};
+
+const CancelIcon = ({ onClick, description }) => (
   <div title={description}>
     <svg
       onClick={onClick}
@@ -15,4 +26,8 @@ const CancelIcon = ({ onClick, description = '' }) => (
     </svg>
   </div>
 );
+
+CancelIcon.propTypes = propTypes;
+CancelIcon.defaultProps = defaultProps;
+
 export default CancelIcon;

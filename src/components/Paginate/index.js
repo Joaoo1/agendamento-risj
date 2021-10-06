@@ -1,5 +1,12 @@
 import ReactPaginate from 'react-paginate';
+import PropTypes from 'prop-types';
+
 import './styles.css';
+
+const propTypes = {
+  pages: PropTypes.number.isRequired,
+  onPageClick: PropTypes.func.isRequired,
+};
 
 const Paginate = ({ pages, onPageClick }) => (
   <ReactPaginate
@@ -15,5 +22,7 @@ const Paginate = ({ pages, onPageClick }) => (
     activeLinkClassName="active"
   />
 );
+
+Paginate.propTypes = propTypes;
 
 export default Paginate;

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import {
   Modal,
   ModalMain,
@@ -9,15 +11,28 @@ import {
   Text,
 } from './styles';
 
+const propTypes = {
+  show: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
+  message: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  confirmButtonColor: PropTypes.string,
+};
+
+const defaultProps = {
+  confirmButtonColor: '#ff2424',
+};
+
 const ConfirmModal = ({
   show,
-  handleClose,
-  handleConfirm,
+  onClose,
+  onConfirm,
   message,
   title,
-  confirmButtonColor = '#ff2424',
+  confirmButtonColor,
 }) =>
-  show ? (
+  show && (
     <Modal>
       <ModalMain>
         <Title>{title}</Title>
@@ -25,17 +40,19 @@ const ConfirmModal = ({
         <Text>{message}</Text>
         <Divider />
         <ButtonsContainer>
-          <CancelButton onClick={handleClose}>Cancelar</CancelButton>
+          <CancelButton onClick={onClose}>Cancelar</CancelButton>
           <ConfirmButton
             backgroundColor={confirmButtonColor}
-            onClick={handleConfirm}
+            onClick={onConfirm}
           >
             Confirmar
           </ConfirmButton>
         </ButtonsContainer>
       </ModalMain>
     </Modal>
-  ) : (
-    <></>
   );
+
+ConfirmModal.propTypes = propTypes;
+ConfirmModal.defaultProps = defaultProps;
+
 export default ConfirmModal;

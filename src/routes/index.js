@@ -2,47 +2,47 @@ import { Switch, Route } from 'react-router-dom';
 
 import RouteWrapper from './Route';
 import Home from '../pages/Home';
-import Appointment from '../pages/Appointment';
-import ListAppointments from '../pages/ListAppointments';
-import AdminAppointments from '../pages/AdminAppointments';
-import AdminSchedule from '../pages/AdminSchedule';
-import AdminLogin from '../pages/AdminLogin';
-import AdminCanceledAppointments from '../pages/AdminCanceledAppointments';
-import AdminConcludeAppointments from '../pages/AdminConcludeAppointments';
-import AdminHolidays from '../pages/AdminHolidays';
+import Login from '../pages/Login';
+import ScheduleAppointment from '../pages/ScheduleAppointment';
+import UserAppointments from '../pages/UserAppointments';
+import AdminAppointments from '../pages/Admin/Appointments';
+import AdminSchedule from '../pages/Admin/Schedule';
+import AdminCanceledAppointments from '../pages/Admin/CanceledAppointments';
+import AdminConcludeAppointments from '../pages/Admin/ConcludeAppointments';
+import AdminHolidays from '../pages/Admin/Holidays';
 
 const Routes = () => (
   <Switch>
     <RouteWrapper path="/" exact component={Home} />
-    <RouteWrapper path="/agendamento" component={Appointment} />
-    <RouteWrapper path="/agendamentos_feitos" component={ListAppointments} />
-    <Route path="/admin" component={AdminLogin} />
+    <RouteWrapper path="/agendar" component={ScheduleAppointment} />
+    <RouteWrapper path="/agendamentos" component={UserAppointments} />
+    <Route path="/admin" exact component={Login} />
     <RouteWrapper
-      path="/admin_appointments"
+      path="/admin/appointments"
       component={AdminAppointments}
       isPrivate
       title="Agendamentos"
     />
     <RouteWrapper
-      path="/admin_available"
+      path="/admin/schedule"
       component={AdminSchedule}
       isPrivate
       title="Horários disponíveis"
     />
     <RouteWrapper
-      path="/admin_canceled"
+      path="/admin/canceled-appointments"
       component={AdminCanceledAppointments}
       isPrivate
       title="Agendamentos cancelados"
     />
     <RouteWrapper
-      path="/admin_conclude"
+      path="/admin/conclude-appointments"
       component={AdminConcludeAppointments}
       isPrivate
       title="Agendamentos concluídos"
     />
     <RouteWrapper
-      path="/admin_holidays"
+      path="/admin/holidays"
       component={AdminHolidays}
       isPrivate
       title="Feriados"

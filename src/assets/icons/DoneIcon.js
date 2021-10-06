@@ -1,4 +1,15 @@
-const DoneIcon = ({ onClick, description = '' }) => (
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  onClick: PropTypes.func.isRequired,
+  description: PropTypes.string,
+};
+
+const defaultProps = {
+  description: '',
+};
+
+const DoneIcon = ({ onClick, description }) => (
   <div title={description}>
     <svg
       onClick={onClick}
@@ -15,4 +26,8 @@ const DoneIcon = ({ onClick, description = '' }) => (
     </svg>
   </div>
 );
+
+DoneIcon.propTypes = propTypes;
+DoneIcon.defaultProps = defaultProps;
+
 export default DoneIcon;

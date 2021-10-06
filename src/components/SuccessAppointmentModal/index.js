@@ -1,9 +1,18 @@
+import PropTypes from 'prop-types';
+
 import LogoImg from '../../assets/images/logo.png';
 
 import { Modal, ModalMain, Button, Header, Content, Title } from './styles';
 
+const propTypes = {
+  show: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  hour: PropTypes.string.isRequired,
+  day: PropTypes.string.isRequired,
+};
+
 const SuccessAppointmentModal = ({ show, handleClose, day, hour }) =>
-  show ? (
+  show && (
     <Modal>
       <ModalMain>
         <Header>
@@ -27,7 +36,8 @@ const SuccessAppointmentModal = ({ show, handleClose, day, hour }) =>
         <Button onClick={handleClose}>Fechar</Button>
       </ModalMain>
     </Modal>
-  ) : (
-    <></>
   );
+
+SuccessAppointmentModal.propTypes = propTypes;
+
 export default SuccessAppointmentModal;

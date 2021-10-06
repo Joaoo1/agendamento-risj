@@ -1,6 +1,19 @@
 import { useCallback } from 'react';
+import PropTypes from 'prop-types';
 
-const CPFInput = ({ CPFFinished, ...props }) => {
+const propTypes = {
+  CPFFinished: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  id: PropTypes.string,
+  className: PropTypes.string,
+};
+
+const defaultProps = {
+  id: '',
+  className: '',
+};
+
+const CPFInput = ({ CPFFinished, onChange, id, className }) => {
   const handleKeyUp = useCallback(e => {
     let { value } = e.currentTarget;
     // Only accept number
@@ -15,7 +28,18 @@ const CPFInput = ({ CPFFinished, ...props }) => {
     }
   }, []);
 
-  return <input maxLength={11} {...props} onKeyUp={handleKeyUp} />;
+  return (
+    <input
+      className={className}
+      id={id}
+      maxLength={11}
+      onChange={onChange}
+      onKeyUp={handleKeyUp}
+    />
+  );
 };
+
+CPFInput.propTypes = propTypes;
+CPFInput.defaultProps = defaultProps;
 
 export default CPFInput;

@@ -5,33 +5,38 @@ import LogoImg from '../../../assets/images/logo.png';
 
 import { Menu, MenuItem, AsideContainer, Logo, UserName } from './styles';
 
-const AuthAside = () => (
-  <AsideContainer>
-    <Logo src={LogoImg} alt="Logomarca do Registro de imóveis de São José" />
-    <UserName>{getAdminUserName()}</UserName>
-    <Menu>
-      <MenuItem>
-        <NavLink to="/admin_appointments">Agendamentos</NavLink>
-      </MenuItem>
-      <MenuItem>
-        <NavLink to="/admin_conclude">Agend. concluídos</NavLink>
-      </MenuItem>
-      <MenuItem>
-        <NavLink to="/admin_canceled">Agend. cancelados</NavLink>
-      </MenuItem>
-      <MenuItem>
-        <NavLink to="/admin_available">Horários disponíveis</NavLink>
-      </MenuItem>
-      <MenuItem>
-        <NavLink to="/admin_holidays">Feriados</NavLink>
-      </MenuItem>
-      <MenuItem>
-        <NavLink onClick={() => logout()} to="/admin">
-          Sair do sistema
-        </NavLink>
-      </MenuItem>
-    </Menu>
-  </AsideContainer>
-);
+const AuthAside = () => {
+  function handleLogoutClick() {
+    logout();
+  }
 
+  return (
+    <AsideContainer>
+      <Logo src={LogoImg} alt="Logomarca do Registro de imóveis de São José" />
+      <UserName>{getAdminUserName()}</UserName>
+      <Menu>
+        <MenuItem>
+          <NavLink to="/admin/appointments">Agendamentos</NavLink>
+        </MenuItem>
+        <MenuItem>
+          <NavLink to="/admin/conclude-appointments">Agend. concluídos</NavLink>
+        </MenuItem>
+        <MenuItem>
+          <NavLink to="/admin/canceled-appointments">Agend. cancelados</NavLink>
+        </MenuItem>
+        <MenuItem>
+          <NavLink to="/admin/schedule">Horários disponíveis</NavLink>
+        </MenuItem>
+        <MenuItem>
+          <NavLink to="/admin/holidays">Feriados</NavLink>
+        </MenuItem>
+        <MenuItem>
+          <NavLink onClick={handleLogoutClick} to="/admin" exact>
+            Sair do sistema
+          </NavLink>
+        </MenuItem>
+      </Menu>
+    </AsideContainer>
+  );
+};
 export default AuthAside;

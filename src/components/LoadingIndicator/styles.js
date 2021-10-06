@@ -13,5 +13,4 @@ const LoadingContainer = styled.div`
   z-index: 9999;
 `;
 
-// eslint-disable-next-line import/prefer-default-export
 export { LoadingContainer };

@@ -5,6 +5,10 @@ const Header = styled.header`
   display: flex;
   justify-content: flex-start;
 
+  > div {
+    cursor: pointer;
+  }
+
   @media (max-width: 640px) {
     justify-content: center;
   }

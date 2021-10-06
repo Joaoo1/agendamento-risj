@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { getToken } from './auth';
 
 const api = axios.create({
@@ -12,4 +13,5 @@ api.interceptors.request.use(async config => {
   }
   return config;
 });
+
 export default api;

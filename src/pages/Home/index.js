@@ -1,33 +1,30 @@
 import { useHistory } from 'react-router-dom';
 
-import { Container, Button, Footer } from './styles';
+import HomeFooter from '../../components/HomeFooter';
+
+import { Container, Button } from './styles';
 
 const Home = () => {
   const history = useHistory();
 
-  function handleNavigateToAppointment() {
-    history.push('/agendamento');
+  function handleScheduleAppointmentButtonClick() {
+    history.push('/agendar');
   }
 
-  function handleNavigateToListAppointments() {
-    history.push('/agendamentos_feitos');
+  function handleUserAppointmentsButtonClick() {
+    history.push('/agendamentos');
   }
+
   return (
     <Container>
       <h2>Agendamento de atendimento</h2>
-      <Button onClick={handleNavigateToAppointment}>Agendar um horário</Button>
-      <Button onClick={handleNavigateToListAppointments}>
+      <Button onClick={handleScheduleAppointmentButtonClick}>
+        Agendar um horário
+      </Button>
+      <Button onClick={handleUserAppointmentsButtonClick}>
         Verificar agendamentos feitos
       </Button>
-      <Footer>
-        <p>
-          Registro de imóveis de São José © 2021 - Todos os Direitos Reservados{' '}
-        </p>
-        <p>
-          Desenvolvido por{' '}
-          <a href="https://github.com/Joaoo1">João Vitor da Silva</a>
-        </p>
-      </Footer>
+      <HomeFooter />
     </Container>
   );
 };
